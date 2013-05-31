@@ -1,0 +1,73 @@
+$iconSpritePath: "../images/glyphicons-halflings.png";
+$iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
+
+@import 'sass-bootstrap/lib/bootstrap';
+
+$appnamecolor: #aaa;
+body {
+    background-color: #eee;
+}
+.hero-unit {
+    margin: 50px auto 0 auto;
+    padding: 40px 40px 20px 40px;
+    width: 300px;
+    background-color: darken(white, 1%);
+    border: 1px solid lighten($appnamecolor, 17%);
+}
+.appname {
+	color: $appnamecolor;
+	text-align: center;
+	font-weight: normal;
+}
+
+$logo-color: #f00;
+.logo {
+	text-align: center;
+	color: darken($logo-color,8%);
+}
+.login_form {
+	::-webkit-input-placeholder { color: lighten($appnamecolor, 10%); }
+	::-moz-placeholder { color: lighten($appnamecolor, 10%); }
+	:-ms-input-placeholder { color: lighten($appnamecolor, 10%); }
+	margin: 30px 0 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	text-align: center;
+	input {
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+		border-radius: 0px;
+		padding: 10px;
+		background-color: #eee;
+		border: 0px;
+	}
+}
+
+.icon-ok {
+	color: white;
+}
+$login_button-color: #0088cc;
+.login_button {
+	display: inline-block;
+	margin: 5px 0 0 0;
+	width: 226px;
+	line-height: 2.5;
+	text-align: center;
+	background-color: $login_button-color;
+	text-decoration: none;
+	border: 1px solid darken(white, 1%);
+}
+.login_button:hover, .login_button:active {
+	text-decoration: none;
+}
+.login_button:hover {
+       	border-width: 1px;
+	border-top-width: 1px;
+        border-style: solid;
+        border-color: darken($appnamecolor, 20%);
+        border-top-color: $appnamecolor;
+}
+.login_button:active {
+	background-color: darken($login_button-color, 6%);
+}

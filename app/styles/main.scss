@@ -4,14 +4,20 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 @import 'sass-bootstrap/lib/bootstrap';
 
 $appnamecolor: #aaa;
+$offwhite: darken(white, 1%);
 body {
     background-color: #eee;
+}
+@mixin borderbox() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 .hero-unit {
     margin: 50px auto 0 auto;
     padding: 40px 40px 20px 40px;
     width: 300px;
-    background-color: darken(white, 1%);
+    background-color: $offwhite;
     border: 1px solid lighten($appnamecolor, 17%);
 }
 .appname {
@@ -20,20 +26,22 @@ body {
 	font-weight: normal;
 }
 
-$logo-color: #f00;
+$logo-color: darken(#f00, 8%);
 .logo {
 	text-align: center;
-	color: darken($logo-color,8%);
+	color: $logo-color;
 }
+@mixin placeholder($color, $percent) {
+	::-webkit-input-placeholder { color: lighten($color, $percent); }
+	::-moz-placeholder { color: lighten($color, $percent); }
+	:-ms-input-placeholder { color: lighten($color, $percent); }
+}
+$placeholder-lightness: 10%;
 .login_form {
-	::-webkit-input-placeholder { color: lighten($appnamecolor, 10%); }
-	::-moz-placeholder { color: lighten($appnamecolor, 10%); }
-	:-ms-input-placeholder { color: lighten($appnamecolor, 10%); }
+	@include placeholder($appnamecolor, $placeholder-lightness);
 	margin: 30px 0 0;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
 	text-align: center;
+	@include borderbox();
 	input {
 		-webkit-border-radius: 0px;
 		-moz-border-radius: 0px;
@@ -48,7 +56,14 @@ $logo-color: #f00;
 	color: white;
 }
 $login_button-color: #0088cc;
+$login-border-width: 2px;
+@mixin bevel($topleftcolor,$bottomrightcolor) {
+        border-color: $bottomrightcolor;
+        border-top-color: $topleftcolor;
+        border-left-color: $topleftcolor;
+}
 .login_button {
+	@include borderbox();
 	display: inline-block;
 	margin: 5px 0 0 0;
 	width: 226px;
@@ -56,18 +71,22 @@ $login_button-color: #0088cc;
 	text-align: center;
 	background-color: $login_button-color;
 	text-decoration: none;
-	border: 1px solid darken(white, 1%);
+	border: $login-border-width solid;
+	@include bevel(lighten($login_button-color, 5%), darken($login_button-color, 5%))
 }
 .login_button:hover, .login_button:active {
 	text-decoration: none;
 }
 .login_button:hover {
-       	border-width: 1px;
-	border-top-width: 1px;
         border-style: solid;
-        border-color: darken($appnamecolor, 20%);
-        border-top-color: $appnamecolor;
 }
+
 .login_button:active {
 	background-color: darken($login_button-color, 6%);
+	@include bevel(lighten($login_button-color, 1%), darken($login_button-color, 8%))
+}
+$disabled-color: lighten(desaturate($login_button-color, 90%),30%);
+.disabled_button, .disabled_button:active, .disabled_button:hover {
+	border-color: $disabled-color;
+	background-color: $disabled-color;
 }

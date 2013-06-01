@@ -16,7 +16,7 @@ body {
 .hero-unit {
     margin: 50px auto 0 auto;
     padding: 40px 40px 20px 40px;
-    width: 300px;
+    max-width: 300px;
     background-color: $offwhite;
     border: 1px solid lighten($appnamecolor, 17%);
 }
@@ -74,7 +74,7 @@ $login-border-width: 2px;
 	border: $login-border-width solid;
 	@include bevel(lighten($login_button-color, 5%), darken($login_button-color, 5%))
 }
-.login_button:hover, .login_button:active {
+.login_button:hover, .login_button:active, .login_button:focus {
 	text-decoration: none;
 }
 .login_button:hover {
@@ -89,4 +89,16 @@ $disabled-color: lighten(desaturate($login_button-color, 90%),30%);
 .disabled_button, .disabled_button:active, .disabled_button:hover {
 	border-color: $disabled-color;
 	background-color: $disabled-color;
+}
+span.relative {
+	position: relative;
+}
+.remove_button {
+	position: absolute;
+	cursor: pointer;
+	visibility: hidden;
+	right: 8px;
+	bottom: -1px;
+	color: gray;
+	z-index: 10;
 }
